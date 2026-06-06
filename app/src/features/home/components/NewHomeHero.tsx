@@ -31,8 +31,8 @@ export function NewHomeHero(): ReactElement {
       <section className="relative flex h-[25rem] w-full flex-col items-center justify-center overflow-hidden bg-background md:h-[40rem]">
         {/* Hero Title with Sparkles */}
         {}
-        <h1 className="relative z-20 whitespace-nowrap text-center font-bold text-2xl text-foreground md:text-5xl lg:text-6xl">
-          Build{" "}
+        <h1 className="relative z-20 max-w-5xl text-center font-bold text-2xl text-foreground md:text-5xl lg:text-6xl">
+          Yo is a{" "}
           <span className="relative inline-block text-gradient-accent">
             community-owned
             {/* Sparkles Effect Container */}
@@ -85,7 +85,7 @@ export function NewHomeHero(): ReactElement {
               <div className="absolute inset-0 h-full w-full bg-background [mask-image:radial-gradient(250px_100px_at_top,transparent_20%,white)] md:[mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]" />
             </div>
           </span>{" "}
-          AI apps.
+          AI node.
         </h1>
 
         {/* Content Below Sparkles */}
@@ -111,9 +111,9 @@ export function NewHomeHero(): ReactElement {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link href="https://github.com/cogni-dao/cogni">
+                <Link href="https://github.com/cogni-test-org/yo">
                   <Github className="mr-2 size-4" />
-                  Start your own
+                  View the repo
                 </Link>
               </Button>
               <Button size="lg" onClick={handleTryDemo}>
@@ -123,7 +123,7 @@ export function NewHomeHero(): ReactElement {
             </div>
 
             <p className="mt-8 max-w-3xl text-lg text-muted-foreground sm:text-xl">
-              Web3 Gov + Web2 AI
+              Fast coordination for a newly formed Cogni community.
             </p>
           </div>
         </div>

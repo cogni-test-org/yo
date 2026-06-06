@@ -47,13 +47,13 @@ export function AppHeader(): ReactElement {
             >
               <Image
                 src="/TransparentBrainOnly.png"
-                alt="Cogni Brain Logo"
+                alt="Yo node logo"
                 width={24}
                 height={24}
                 className="shrink-0"
               />
               <span className="hidden truncate font-bold text-gradient-accent text-xl md:inline">
-                Cogni
+                Yo
               </span>
             </Link>
 
@@ -85,13 +85,13 @@ export function AppHeader(): ReactElement {
                 </svg>
               </a>
               <GithubButton
-                username="cogni-DAO"
-                repo="cogni-template"
+                username="cogni-test-org"
+                repo="yo"
                 size="lg"
                 variant="default"
                 showGithubIcon={true}
                 showStarIcon={true}
-                label="cogni-template"
+                label="yo"
                 initialStars={0}
                 targetStars={172900}
                 autoAnimate={true}
