@@ -53,7 +53,7 @@ const NAV_ITEMS = [
 
 const EXTERNAL_LINKS = [
   {
-    href: "https://github.com/cogni-DAO/cogni-template",
+    href: "https://github.com/cogni-test-org/yo",
     label: "GitHub",
     icon: Github,
   },
@@ -90,18 +90,18 @@ export function AppSidebar(): ReactElement {
       <SidebarHeader className="h-16 shrink-0 justify-center">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild tooltip="Cogni">
+            <SidebarMenuButton size="lg" asChild tooltip="Yo">
               <Link href="/chat">
                 <div className="flex aspect-square size-8 items-center justify-center">
                   <Image
                     src="/TransparentBrainOnly.png"
-                    alt="Cogni"
+                    alt="Yo"
                     width={24}
                     height={24}
                   />
                 </div>
                 <span className="truncate font-bold text-gradient-accent">
-                  Cogni
+                  Yo
                 </span>
               </Link>
             </SidebarMenuButton>
