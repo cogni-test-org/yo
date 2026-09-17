@@ -7,11 +7,36 @@
 > `provision-env`, or touch Argo. See `docs/spec/node-ci-cd-contract.md` in the
 > operator monorepo for the full two-views model.
 
+## Your cognition is delivered at session start
+
+A SessionStart hook ([`.claude/settings.json`](.claude/settings.json) for Claude Code,
+[`.codex/config.toml`](.codex/config.toml) for Codex) runs the shared loader
+[`scripts/agent/session-cognition.sh`](scripts/agent/session-cognition.sh), which pulls a
+**cognition bundle** — tooling invariants + a live skills index + knowledge-domain pointers —
+and injects it into context. Codex needs a one-time trust (`/hooks`).
+
+- The loader derives `https://<node-slug>.cognidao.org/api/v1/cognition` from
+  `.cogni/repo-spec.yaml` `intent.name` and recalls **this node's own hub** with
+  the NODE account key (`COGNI_NODE_API_KEY`); there is no `COGNI_COGNITION_URL` override.
+- Self-serve if cognition does not load: register a NODE agent, save
+  `COGNI_NODE_API_KEY` in `.env.cogni`, then retry. `.env.cogni` holds two accounts
+  (NODE + OPERATOR for CI/CD) — see [`.env.cogni.example`](.env.cogni.example) and
+  the `node-launch-handoff` knowledge entry. Conductor ensures the main workspace
+  has `COGNI_NODE_API_KEY` and symlinks `.env.cogni` into future worktrees.
+- This node serves its own bundle at `GET /api/v1/cognition` (authed, index-only — needs a principal; `/api/v1/agent/register` stays the one public bootstrap seam).
+
 ## What you own (node-dev half)
 
 - **App + graphs + packages** at the repo root.
 - **Your CI** (`.github/workflows/`), policy (`biome`, `tsconfig`, `.dependency-cruiser.cjs`), and `Dockerfile` — `POLICY_STAYS_LOCAL`. Your CI builds + pushes your own image (`FORK_FREEDOM`).
 - **Review policy**: `.cogni/repo-spec.yaml` `gates:` + `.cogni/rules/`. A PR here routes + reviews against these (born-reviewable). Tune the gate set to your node's mission.
+
+## Agent delivery default
+
+For code changes, do not stop at an uncommitted local diff unless the user explicitly asks
+for local-only work. Commit coherent checkpoints, push a branch, open a draft PR for major
+checkpoints, and use the candidate-flight + `/validate-candidate` loop for live render or
+behavior proof before merge.
 
 ## Add a secret (node-dev half)
 
